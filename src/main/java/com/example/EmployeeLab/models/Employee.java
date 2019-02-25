@@ -1,4 +1,4 @@
-package com.example.EmployeeLab.controllers;
+package com.example.EmployeeLab.models;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
