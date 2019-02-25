@@ -1,9 +1,9 @@
 package com.example.EmployeeLab.models;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "employees")
 
 public class Employee {
 
@@ -13,16 +13,16 @@ public class Employee {
     private Long id;
 
     @Column(name = "name")
-    String name;
+    private String name;
 
     @Column(name = "age")
-    int age;
+    private int age;
 
-    @Column(name = "employeeNumber")
-    int employeeNumber;
+    @Column(name = "employee_number")
+    private int employeeNumber;
 
     @Column(name = "email")
-    String email;
+    private String email;
 
     public Employee(String name, int age, int employeeNumber, String email) {
         this.name = name;
