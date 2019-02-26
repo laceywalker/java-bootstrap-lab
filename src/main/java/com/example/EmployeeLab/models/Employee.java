@@ -1,5 +1,7 @@
 package com.example.EmployeeLab.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -24,17 +26,32 @@ public class Employee {
     @Column(name = "email")
     private String email;
 
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
+
+
 //    private ArrayList<Project> projects;
 
-    public Employee(String name, int age, int employeeNumber, String email) {
+    public Employee(String name, int age, int employeeNumber, String email, Department department) {
         this.name = name;
         this.age = age;
         this.employeeNumber = employeeNumber;
         this.email = email;
+        this.department = department;
     }
 
     public Employee(){
 
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public Long getId(){
