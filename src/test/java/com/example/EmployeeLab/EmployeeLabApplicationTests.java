@@ -69,15 +69,20 @@ public class EmployeeLabApplicationTests {
 
 	@Test
 	public void canSaveProject(){
+
+
 		Department techDepartment = new Department("Tech");
 		departmentRepository.save(techDepartment);
+
+
 		Project project = new Project("Experiments with FartyPants", 10);
 		Employee employee = new Employee("Jim Jones", 27, 1234, "jimmyJ@cult.net", techDepartment);
 		project.addToEmployeesToProject(employee);
 		employee.assignProjectToEmployee(project);
 
-		employeeRepository.save(employee);
 		projectRepository.save(project);
+		employeeRepository.save(employee);
+
 	}
 
 

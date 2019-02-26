@@ -1,13 +1,15 @@
 package com.example.EmployeeLab.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "employees_projects")
+@Table(name = "projects")
 
 
 public class Project {
@@ -23,7 +25,8 @@ public class Project {
     private int duration;
 
     @JsonIgnore
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany
+    @Cascade(value = {CascadeType.ALL})
     @JoinTable(
             name = "employees_projects",
             joinColumns = {@JoinColumn(
@@ -36,8 +39,9 @@ public class Project {
                     nullable = false,
                     updatable = false
             )})
-
     private List<Employee> employeesOnProject;
+
+
 
 
     public Project(String projectName, int duration){
@@ -89,4 +93,6 @@ public class Project {
     public int employeesProjectCount(){
         return this.employeesOnProject.size();
     }
+
+
 }

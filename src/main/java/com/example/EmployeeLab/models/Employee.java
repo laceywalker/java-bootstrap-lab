@@ -120,5 +120,11 @@ public class Employee {
         return this.projectsForEmployee.size();
     }
 
+    public List<Project> getProjectsForEmployee() {
+        return projectsForEmployee;
+    }
 
+    public void setProjectsForEmployee(List<Project> projectsForEmployee) {
+        this.projectsForEmployee = projectsForEmployee;
+    }
 }
