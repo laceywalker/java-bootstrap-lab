@@ -55,6 +55,14 @@ public class Department {
     public void setEmployeesInDepartment(ArrayList<Employee> employeesInDepartment) {
         this.employeesInDepartment = employeesInDepartment;
     }
+
+    public void addToEmployeesList(Employee employee){
+        this.employeesInDepartment.add(employee);
+    }
+
+    public int employeeListCount(){
+        return this.employeesInDepartment.size();
+    }
 }
 
 

@@ -3,6 +3,8 @@ package com.example.EmployeeLab.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -31,8 +33,22 @@ public class Employee {
     @JoinColumn(name = "department_id", nullable = false)
     private Department department;
 
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "employees_projects",
+            joinColumns = {@JoinColumn(
+                    name = "employee_id",
+                    nullable = false,
+                    updatable = false
+            )},
+            inverseJoinColumns = {@JoinColumn(
+                    name = "project_id",
+                    nullable = false,
+                    updatable = false
+            )})
 
-//    private ArrayList<Project> projects;
+    private List<Project> projectsForEmployee;
+
 
     public Employee(String name, int age, int employeeNumber, String email, Department department) {
         this.name = name;
@@ -40,7 +56,9 @@ public class Employee {
         this.employeeNumber = employeeNumber;
         this.email = email;
         this.department = department;
+        this.projectsForEmployee = new ArrayList<>();
     }
+
 
     public Employee(){
 
@@ -93,4 +111,14 @@ public class Employee {
     public String getEmail() {
         return email;
     }
+
+    public void assignProjectToEmployee(Project project){
+        this.projectsForEmployee.add(project);
+    }
+
+    public int employeeProjectCount(){
+        return this.projectsForEmployee.size();
+    }
+
+
 }
