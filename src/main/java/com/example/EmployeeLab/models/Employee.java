@@ -24,6 +24,8 @@ public class Employee {
     @Column(name = "email")
     private String email;
 
+//    private ArrayList<Project> projects;
+
     public Employee(String name, int age, int employeeNumber, String email) {
         this.name = name;
         this.age = age;
